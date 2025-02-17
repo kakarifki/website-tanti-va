@@ -6,7 +6,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl p-4">
         {/* Left side text */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl font-bold mb-4">Let's make your business shine</h1>
+          <h1 className="text-4xl font-bold mb-4">Let&apos;s make your business shine</h1>
           <p className="text-lg text-gray-600">
             A Virtual Assistant can help you manage your daily tasks efficiently,
             so you can focus on growing your business.
