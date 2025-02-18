@@ -1,4 +1,6 @@
 import About from '@/components/About'
+import Services from '@/components/Service'
+import Testimonials from '@/components/Testimonials'
 import Image from 'next/image'
 
 export default function Home() {
@@ -26,6 +28,8 @@ export default function Home() {
         </div>
 
         <About />
+        <Services />
+        <Testimonials />
       </div>
     </main>
   )
