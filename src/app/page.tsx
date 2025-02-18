@@ -1,3 +1,4 @@
+import About from '@/components/About'
 import Image from 'next/image'
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
             className="rounded-xl shadow-lg"
           />
         </div>
+
+        <About />
       </div>
     </main>
   )
