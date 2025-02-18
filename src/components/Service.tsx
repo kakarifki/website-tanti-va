@@ -1,22 +1,20 @@
-import React from 'react'
-
 const services = [
     {
         title: 'Administrative Support',
-        description: 'Handling emails, scheduling, data entry, and other administrative tasks to keep your business organized.'
+        description: 'Handling emails, scheduling, data entry, and other administrative tasks to keep your business organized.',
     },
     {
         title: 'Social Media Management',
-        description: 'Creating, scheduling, and managing social media content to grow your online presence.'
+        description: 'Creating, scheduling, and managing social media content to grow your online presence.',
     },
     {
         title: 'Customer Support',
-        description: 'Providing exceptional support to your customers via email, chat, or phone.'
+        description: 'Providing exceptional support to your customers via email, chat, or phone.',
     },
     {
         title: 'Content Creation',
-        description: 'Writing blog posts, newsletters, and other copywriting needs to engage your audience.'
-    }
+        description: 'Writing blog posts, newsletters, and other copywriting needs to engage your audience.',
+    },
 ]
 
 export default function Services() {
