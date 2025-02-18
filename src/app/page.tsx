@@ -1,4 +1,5 @@
 import About from '@/components/About'
+import Contacts from '@/components/Contact'
 import Hero from '@/components/Hero'
 import Services from '@/components/Service'
 import Testimonials from '@/components/Testimonials'
@@ -10,6 +11,7 @@ export default function Home() {
         <About />
         <Services />
         <Testimonials />
+        <Contacts />
     </main>
   )
 }
