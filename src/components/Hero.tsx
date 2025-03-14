@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 export default function Hero() {
     return (
-        <section className="py-12 md:py-16 bg-white" id="hero">
-            <div className="container mx-auto px-4">
+        <section className="min-h-screen flex items-center bg-white" id="hero">
+            <div className="container mx-auto px-4 py-12 md:py-0">
                 <div className="flex flex-col md:flex-row items-center justify-between">
                     <div className="text-center md:text-left md:w-1/2">
                         <h1 className="text-4xl font-bold mb-4">Let&apos;s make your business shine</h1>
