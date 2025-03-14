@@ -11,6 +11,12 @@ export default function Hero() {
                             A Virtual Assistant can help you manage your daily tasks efficiently,
                             so you can focus on growing your business.
                         </p>
+                        <button
+                            className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300"
+                            // onClick={() => {}}
+                        >
+                            Book 30 Minutes Discovery Call
+                        </button>
                     </div>
 
                     <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
