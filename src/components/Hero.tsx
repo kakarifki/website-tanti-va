@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Hero() {
     return (
-        <section className="min-h-screen flex items-center bg-white" id="hero">
+        <section className="min-h-screen flex items-center bg-white pt-20 md:pt-0" id="hero">
             <div className="container mx-auto px-4 py-12 md:py-0">
                 <div className="flex flex-col md:flex-row items-center justify-between">
                     <div className="text-center md:text-left md:w-1/2">
