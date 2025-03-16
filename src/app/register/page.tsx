@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+// import Image from 'next/image';
 
 interface FormData {
   name: string;
@@ -39,15 +40,18 @@ export default function Register() {
   };
 
   return (
-    <div className="py-12 md:py-16 bg-gradient-to-r from-blue-50 to-purple-50 min-h-screen">
+    <div className="py-20 md:py-24 bg-gradient-to-r from-[#d8e8e0] to-[#b4d2c3] min-h-screen">
       <div className="container mx-auto px-4 max-w-md">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-800">
           Registration Form
         </h1>
+        <p className="text-center text-gray-600 mb-8 italic">
+          Let me know you better
+        </p>
         
         <form 
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white rounded-lg shadow-lg p-6 md:p-8"
+          className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-[#b4d2c3]/30"
         >
           <div className="mb-6">
             <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
@@ -60,7 +64,7 @@ export default function Register() {
                 required: 'Name is required',
                 minLength: { value: 2, message: 'Name must be at least 2 characters' }
               })}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b4d2c3] ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
               placeholder="Enter your full name"
             />
             {errors.name && (
@@ -82,7 +86,7 @@ export default function Register() {
                   message: 'Email is invalid'
                 }
               })}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b4d2c3] ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
               placeholder="Enter your email address"
             />
             {errors.email && (
@@ -108,7 +112,7 @@ export default function Register() {
                     message: 'Phone number must be 8-12 digits'
                   }
                 })}
-                className={`flex-1 px-4 py-2 border rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                className={`flex-1 px-4 py-2 border rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#b4d2c3] ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder="8123456789"
               />
             </div>
@@ -120,10 +124,16 @@ export default function Register() {
           
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full bg-[#b4d2c3] hover:bg-[#9fc3b1] text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-[#b4d2c3] focus:ring-opacity-50 shadow-md"
           >
             Register
           </button>
+          
+          <div className="mt-6 text-center">
+            <p className="text-gray-500 text-sm">
+              Join our community and discover how we can help you
+            </p>
+          </div>
         </form>
       </div>
     </div>
