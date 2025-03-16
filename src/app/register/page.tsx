@@ -31,6 +31,9 @@ export default function Register() {
       if (!response.ok) {
         throw new Error(result.error || 'Failed to register');
       }
+
+      // Set a cookie to indicate successful registration
+      document.cookie = 'registration_complete=true; path=/';
       
       router.push('/register/success');
     } catch (error: unknown) {
