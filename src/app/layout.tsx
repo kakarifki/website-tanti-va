@@ -1,9 +1,15 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingButton from "@/components/FloatingButton";
+import Providers from "@/components/Providers";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tanti Pujian's Website",
+  description: "Your Personal Virtual Assistant",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,11 +21,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Tanti Pujian's Website",
-  description: "Your Persnonal Virtual Asistant",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <FloatingButton />
-        <Footer />
+        <Providers>
+          <Navbar />
+          {children}
+          <FloatingButton />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
