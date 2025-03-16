@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingButton from "@/components/FloatingButton";
 import Providers from "@/components/Providers";
 import type { Metadata } from "next";
 
@@ -21,7 +20,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -34,10 +33,11 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
-          <FloatingButton />
           <Footer />
         </Providers>
       </body>
     </html>
   );
 }
+
+export default RootLayout;

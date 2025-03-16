@@ -3,6 +3,7 @@ import Contacts from '@/components/Contact'
 import Hero from '@/components/Hero'
 import Services from '@/components/Service'
 import Testimonials from '@/components/Testimonials'
+import FloatingButton from '@/components/FloatingButton'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <Services />
         <Testimonials />
         <Contacts />
+        <FloatingButton />
     </main>
   )
 }
