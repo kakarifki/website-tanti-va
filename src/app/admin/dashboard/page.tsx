@@ -104,9 +104,12 @@ export default function AdminDashboard() {
             <div className="p-4 border rounded-lg">
               <h2 className="text-lg font-semibold mb-2">Quick Actions</h2>
               <div className="space-y-2">
-                <button className="w-full text-left px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded transition-colors">
-                  View All Users
-                </button>
+                <button
+                onClick={() => router.push('/admin/users')}
+                className="w-full text-left px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded transition-colors"
+              >
+                View All Users
+              </button>
                 <button className="w-full text-left px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded transition-colors">
                   Export Data
                 </button>
