@@ -19,22 +19,22 @@ export default function Register() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // TODO: Save form data to database
-      // This will be implemented when the backend is created
-      // Example implementation:
-      // const response = await fetch('/api/register', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // });
-      // 
-      // if (!response.ok) throw new Error('Failed to register');
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
       
-      // For now, just redirect to success page
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to register');
+      }
+      
       router.push('/register/success');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Registration error:', error);
-      // Handle error state here
+      alert(error.message || 'An error occurred during registration');
     }
   };
 
