@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        sans: ["SF Pro Display", "SF Pro Text", "system-ui", "sans-serif"],
+      },
     },
   },
   plugins: [],
