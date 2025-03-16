@@ -1,41 +1,72 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function RegistrationSuccess() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if user has completed registration
+    const registrationComplete = document.cookie.includes('registration_complete=true');
+    if (!registrationComplete) {
+      router.push('/register');
+    }
+  }, [router]);
+
   return (
-    <div className="py-12 md:py-16 bg-gradient-to-r from-blue-50 to-purple-50 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-4 max-w-md text-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 md:p-10">
-          <div className="w-16 h-16 bg-green-100 mx-auto rounded-full flex items-center justify-center mb-6">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-10 w-10 text-green-500" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M5 13l4 4L19 7" 
-              />
-            </svg>
+    <div className="min-h-screen bg-gradient-to-r from-[#d8e8e0] to-[#b4d2c3] py-20 md:py-24">
+      <div className="container mx-auto px-4 max-w-lg">
+        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
+          {/* Success Icon */}
+          <div className="mb-8 flex justify-center">
+            <div className="w-20 h-20 bg-[#b4d2c3] rounded-full flex items-center justify-center">
+              <svg
+                className="w-12 h-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+            </div>
           </div>
-          
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-            Registration Successful!
+
+          {/* Thank You Message */}
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Thank You!
           </h1>
-          
-          <p className="text-gray-600 mb-6">
-            You have successfully registered. Thank you for your submission.
+          <p className="text-gray-600 text-lg mb-12">
+            Your registration has been successfully completed.
           </p>
-          
-          <Link 
-            href="/"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-          >
-            Return to Home
-          </Link>
+
+          {/* Action Buttons */}
+          <div className="space-y-4">
+            <Link
+              href="https://calendly.com/tantipujian/30min " // TODO: Add discovery call booking link
+              className="block w-full bg-[#b4d2c3] hover:bg-[#9fc3b1] text-white font-semibold py-4 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+            >
+              Book Discovery Call
+            </Link>
+            <Link
+              href="https://docs.google.com/spreadsheets/d/1Iwgkzr0bJP_ndPPfhYjixBFf-Anr1_cE110GHRH9VQI/edit?usp=sharing" // TODO: Add content planner link
+              className="block w-full bg-white border-2 border-[#b4d2c3] text-[#b4d2c3] hover:bg-[#b4d2c3] hover:text-white font-semibold py-4 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+            >
+              Free Content Planner
+            </Link>
+          </div>
+
+          {/* Additional Info
+          <p className="mt-8 text-sm text-gray-500">
+            Check your email for further instructions
+          </p> */}
         </div>
       </div>
     </div>

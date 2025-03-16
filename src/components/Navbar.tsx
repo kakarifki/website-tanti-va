@@ -8,14 +8,17 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 0);
+      };
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
   }, []);
 
   const toggleMobileMenu = () => {
@@ -23,6 +26,8 @@ const Navbar = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
+    if (typeof window === 'undefined') return;
+
     const isHomePage = window.location.pathname === '/';
     
     if (!isHomePage) {
