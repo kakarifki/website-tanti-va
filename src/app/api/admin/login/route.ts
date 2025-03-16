@@ -3,7 +3,11 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { prisma } from '@/lib/prisma';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is not set');
+}
 
 export async function POST(request: Request) {
   try {
@@ -43,7 +47,7 @@ export async function POST(request: Request) {
     // Generate JWT token
     const token = jwt.sign(
       { adminId: admin.id, email: admin.email },
-      JWT_SECRET,
+      JWT_SECRET as string,
       { expiresIn: '24h' }
     );
 

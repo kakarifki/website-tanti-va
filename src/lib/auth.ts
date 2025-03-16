@@ -1,6 +1,10 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is not set');
+}
 
 export interface JwtPayload {
   adminId: string;
@@ -11,7 +15,7 @@ export interface JwtPayload {
 
 export async function verifyToken(token: string): Promise<JwtPayload> {
   return new Promise((resolve, reject) => {
-    jwt.verify(token, JWT_SECRET, (error, decoded) => {
+    jwt.verify(token, JWT_SECRET as string, (error, decoded) => {
       if (error) {
         reject(error);
       } else {
