@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 
-const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   try {
@@ -44,9 +43,9 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ user }, { status: 201 });
-  } catch (error: any) {
+  } catch (error: Error | unknown) {
     // Handle unique constraint violation
-    if (error.code === 'P2002') {
+    if (error instanceof Error && 'code' in error && error.code === 'P2002') {
       return NextResponse.json(
         { error: 'Email already exists' },
         { status: 400 }

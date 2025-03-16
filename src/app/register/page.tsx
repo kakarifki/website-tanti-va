@@ -32,9 +32,9 @@ export default function Register() {
       }
       
       router.push('/register/success');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Registration error:', error);
-      alert(error.message || 'An error occurred during registration');
+      alert(error instanceof Error ? error.message : 'An error occurred during registration');
     }
   };
 
