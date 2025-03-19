@@ -86,12 +86,20 @@ export default function TestimonialsPage() {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-800">All Testimonials</h1>
-            <button
-              onClick={() => router.push('/admin/dashboard')}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-            >
-              Back to Dashboard
-            </button>
+            <div className="flex gap-4">
+              <button
+                onClick={() => router.push('/admin/testimonials/add')}
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+              >
+                Add Testimonial
+              </button>
+              <button
+                onClick={() => router.push('/admin/dashboard')}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+              >
+                Back to Dashboard
+              </button>
+            </div>
           </div>
 
           <div className="overflow-x-auto">
