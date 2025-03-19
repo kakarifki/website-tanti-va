@@ -49,8 +49,8 @@ export default function Testimonials() {
     };
 
     return (
-        <section className="py-8 pt-16 md:py-12 md:pt-24 bg-white" id="testimonials">
-            <div className="container mx-auto px-4 md:px-6">
+        <section className="py-8 pt-16 md:py-12 md:pt-24 bg-white overflow-hidden" id="testimonials">
+            <div className="container mx-auto px-4 md:px-6 overflow-hidden">
                 <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">Testimonials</h2>
                 {isLoading && (
                     <div className="text-center py-8">
@@ -75,11 +75,11 @@ export default function Testimonials() {
                         </button>
                         <div
                             ref={containerRef}
-                            className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 md:pb-0"
-                            style={{ scrollBehavior: 'smooth' }}
+                            className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 md:pb-0 touch-pan-x cursor-grab active:cursor-grabbing"
+                            style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch', msOverflowStyle: 'none' }}
                         >
                             {testimonials.map((testimonial, index) => (
-                                <div key={`${testimonial.id}-${index}`} className="w-[280px] md:w-[350px] flex-shrink-0 snap-start">
+                                <div key={`${testimonial.id}-${index}`} className="w-[85vw] sm:w-[280px] md:w-[350px] flex-shrink-0 snap-start">
                                     <TestimonialCard testimonial={testimonial} />
                                 </div>
                             ))}
