@@ -66,7 +66,7 @@ export default function Testimonials() {
                     <div className="relative">
                         <button
                             onClick={() => handleScroll('left')}
-                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300 hidden md:block"
+                            className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300"
                             aria-label="Previous testimonial"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,7 +75,7 @@ export default function Testimonials() {
                         </button>
                         <div
                             ref={containerRef}
-                            className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 md:pb-0 touch-pan-x cursor-grab active:cursor-grabbing"
+                            className="grid grid-cols-1 gap-4 md:flex md:overflow-x-auto md:scrollbar-hide md:snap-x md:snap-mandatory md:scroll-smooth md:gap-6 pb-4 md:pb-0 touch-pan-x cursor-grab active:cursor-grabbing sm:grid-cols-1 h-[calc(100vh-200px)] overflow-y-auto snap-y snap-mandatory"
                             style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch', msOverflowStyle: 'none' }}
                         >
                             {testimonials.map((testimonial, index) => (
@@ -86,7 +86,7 @@ export default function Testimonials() {
                         </div>
                         <button
                             onClick={() => handleScroll('right')}
-                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300 hidden md:block"
+                            className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300"
                             aria-label="Next testimonial"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
