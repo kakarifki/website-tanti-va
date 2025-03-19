@@ -75,7 +75,7 @@ export default function Testimonials() {
                         </button>
                         <div
                             ref={containerRef}
-                            className="grid grid-cols-1 gap-4 md:flex md:overflow-x-auto md:scrollbar-hide md:snap-x md:snap-mandatory md:scroll-smooth md:gap-6 pb-4 md:pb-0 touch-pan-x cursor-grab active:cursor-grabbing sm:grid-cols-1 h-[calc(100vh-200px)] overflow-y-auto snap-y snap-mandatory"
+                            className="grid grid-cols-1 gap-4 md:flex md:overflow-x-auto md:scrollbar-hide md:snap-x md:snap-mandatory md:scroll-smooth md:gap-6 pb-4 md:pb-0 touch-pan-x cursor-grab active:cursor-grabbing sm:grid-cols-1 max-h-[500px] md:max-h-none overflow-y-auto md:overflow-y-visible snap-y snap-mandatory"
                             style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch', msOverflowStyle: 'none' }}
                         >
                             {testimonials.map((testimonial, index) => (
