@@ -1,13 +1,15 @@
 'use client'
 
 import TestimonialCard from './TestimonialCard'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { type Testimonial } from '@prisma/client'
 
 export default function Testimonials() {
     const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    // const [scrollPosition, setScrollPosition] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         async function fetchTestimonials() {
@@ -28,10 +30,28 @@ export default function Testimonials() {
         fetchTestimonials();
     }, [])
 
+    const handleScroll = (direction: 'left' | 'right') => {
+        if (containerRef.current) {
+            const container = containerRef.current;
+            const scrollAmount = 350; // Width of one card
+            const currentScroll = container.scrollLeft;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            
+            const newScroll = direction === 'left' 
+                ? Math.max(0, currentScroll - scrollAmount)
+                : Math.min(maxScroll, currentScroll + scrollAmount);
+            
+            container.scrollTo({
+                left: newScroll,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
-        <section className="py-12 pt-24 bg-white" id="testimonials">
-            <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
+        <section className="py-8 pt-16 md:py-12 md:pt-24 bg-white" id="testimonials">
+            <div className="container mx-auto px-4 md:px-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">Testimonials</h2>
                 {isLoading && (
                     <div className="text-center py-8">
                         <p>Loading testimonials...</p>
@@ -43,30 +63,41 @@ export default function Testimonials() {
                     </div>
                 )}
                 {!isLoading && !error && testimonials.length > 0 && (
-                    <div className="overflow-hidden relative">
-                        <div className="flex animate-scroll whitespace-normal">
-                            {[...testimonials, ...testimonials].map((testimonial, index) => (
-                                <div key={`${testimonial.id}-${index}`} className="w-[350px] flex-shrink-0 px-3">
+                    <div className="relative">
+                        <button
+                            onClick={() => handleScroll('left')}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300 hidden md:block"
+                            aria-label="Previous testimonial"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            ref={containerRef}
+                            className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth gap-4 md:gap-6 pb-4 md:pb-0"
+                            style={{ scrollBehavior: 'smooth' }}
+                        >
+                            {testimonials.map((testimonial, index) => (
+                                <div key={`${testimonial.id}-${index}`} className="w-[280px] md:w-[350px] flex-shrink-0 snap-start">
                                     <TestimonialCard testimonial={testimonial} />
                                 </div>
                             ))}
                         </div>
+                        <button
+                            onClick={() => handleScroll('right')}
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300 hidden md:block"
+                            aria-label="Next testimonial"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
                     </div>
                 )}</div>
             
             
-            <style jsx>{`
-                @keyframes scroll {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                .animate-scroll {
-                    animation: scroll 30s linear infinite;
-                }
-                .animate-scroll:hover {
-                    animation-play-state: paused;
-                }
-            `}</style>
+
         </section>
             )
 }
