@@ -9,7 +9,7 @@
     "lint": "next lint",
     "docker:up": "docker compose up -d",
     "db:seed": "prisma db seed",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma migrate deploy"
   },
   "prisma": {
     "seed": "bun prisma/seed.ts"

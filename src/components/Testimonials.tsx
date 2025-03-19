@@ -44,7 +44,7 @@ export default function Testimonials() {
                 )}
                 {!isLoading && !error && testimonials.length > 0 && (
                     <div className="overflow-hidden relative">
-                        <div className="flex animate-scroll whitespace-nowrap">
+                        <div className="flex animate-scroll whitespace-normal">
                             {[...testimonials, ...testimonials].map((testimonial, index) => (
                                 <div key={`${testimonial.id}-${index}`} className="w-[350px] flex-shrink-0 px-3">
                                     <TestimonialCard testimonial={testimonial} />
