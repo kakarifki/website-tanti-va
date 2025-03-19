@@ -10,6 +10,32 @@ export async function GET() {
     return NextResponse.json(testimonials)
 }
 
+export async function DELETE(request: Request) {
+    try {
+        const { searchParams } = new URL(request.url)
+        const id = searchParams.get('id')
+
+        if (!id) {
+            return NextResponse.json(
+                { error: 'Testimonial ID is required' },
+                { status: 400 }
+            )
+        }
+
+        await prisma.testimonial.delete({
+            where: { id }
+        })
+
+        return NextResponse.json({ message: 'Testimonial deleted successfully' })
+    } catch (error) {
+        console.error('Error deleting testimonial:', error)
+        return NextResponse.json(
+            { error: 'Internal server error' },
+            { status: 500 }
+        )
+    }
+}
+
 export async function POST(request: Request) {
     try {
         const body = await request.json()

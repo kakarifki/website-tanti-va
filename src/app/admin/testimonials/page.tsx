@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient, QueryClient } from '@tanstack/react-query';
 
 interface Testimonial {
   id: string;
@@ -14,6 +14,21 @@ interface Testimonial {
   createdAt: string;
   updatedAt: string;
 }
+
+
+
+const deleteTestimonial = async (id: string, token: string, queryClient: QueryClient) => {
+  const response = await fetch(`/api/testimonials?id=${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  
+  if (!response.ok) throw new Error('Failed to delete testimonial');
+  await response.json();
+  queryClient.invalidateQueries({ queryKey: ['testimonials'] });
+};
 
 const fetchTestimonials = async () => {
   const token = localStorage.getItem('adminToken');
@@ -37,6 +52,7 @@ const fetchTestimonials = async () => {
 export default function TestimonialsPage() {
   const router = useRouter();
   const [sortConfig, setSortConfig] = useState<{ key: keyof Testimonial; direction: 'asc' | 'desc' } | null>(null);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
@@ -137,7 +153,10 @@ export default function TestimonialsPage() {
                       onClick={() => requestSort('createdAt')}
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                     >
-                      Date {sortConfig?.key === 'createdAt' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                      Date Created {sortConfig?.key === 'createdAt' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Actions
                     </th>
                   </tr>
                 </thead>
@@ -150,6 +169,29 @@ export default function TestimonialsPage() {
                       <td className="px-6 py-4 text-sm text-gray-900">{testimonial.feedback}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {format(new Date(testimonial.createdAt), 'MMM d, yyyy HH:mm')}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <button
+                          onClick={async () => {
+                            if (window.confirm('Are you sure you want to delete this testimonial?')) {
+                              const token = localStorage.getItem('adminToken');
+                              if (!token) {
+                                alert('No token found. Please login again.');
+                                return;
+                              }
+                              
+                              try {
+                                await deleteTestimonial(testimonial.id, token, queryClient);
+                              } catch (error) {
+                                console.error('Error deleting testimonial:', error);
+                                alert('Failed to delete testimonial');
+                              }
+                            }
+                          }}
+                          className="text-red-600 hover:text-red-800 transition-colors"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
