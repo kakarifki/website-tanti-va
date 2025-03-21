@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function RegistrationSuccess() {
+export default function ContentPlannerSuccess() {
   const router = useRouter();
 
   useEffect(() => {
@@ -44,16 +44,16 @@ export default function RegistrationSuccess() {
             Thank You!
           </h1>
           <p className="text-gray-600 text-lg mb-12">
-            Your registration has been successfully completed.
+            Your registration has been successfully completed. Here&apos;s your free content planner!
           </p>
 
-          {/* Action Buttons */}
+          {/* Action Button */}
           <div className="space-y-4">
             <Link
-              href="https://calendly.com/tantipujian/30min"
+              href="https://docs.google.com/spreadsheets/d/1Iwgkzr0bJP_ndPPfhYjixBFf-Anr1_cE110GHRH9VQI/edit?usp=sharing"
               className="block w-full bg-[#b4d2c3] hover:bg-[#9fc3b1] text-white font-semibold py-4 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 hover:shadow-lg"
             >
-              Book Discovery Call
+              Access Content Planner
             </Link>
             <Link
               href="/"
@@ -64,7 +64,7 @@ export default function RegistrationSuccess() {
           </div>
 
           <p className="mt-8 text-sm text-gray-500">
-            We look forward to speaking with you during the discovery call!
+            Feel free to bookmark this page to access your content planner anytime!
           </p>
         </div>
       </div>

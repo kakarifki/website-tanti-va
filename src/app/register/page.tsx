@@ -35,7 +35,16 @@ export default function Register() {
       // Set a cookie to indicate successful registration
       document.cookie = 'registration_complete=true; path=/';
       
-      router.push('/register/success');
+      // Get registration type from URL query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const registrationType = urlParams.get('type') || 'discovery';
+      
+      // Redirect based on registration type
+      if (registrationType === 'content-planner') {
+        router.push('/register/content-planner-success');
+      } else {
+        router.push('/register/success');
+      }
     } catch (error: unknown) {
       console.error('Registration error:', error);
       alert(error instanceof Error ? error.message : 'An error occurred during registration');

@@ -13,7 +13,7 @@ export default function Hero() {
                             so you can focus on growing your business.
                         </p>
                         <Link
-                            href="/register"
+                            href="/register?type=discovery"
                             className="mt-6 inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300"
                         >
                             Book 30 Minutes Discovery Call
