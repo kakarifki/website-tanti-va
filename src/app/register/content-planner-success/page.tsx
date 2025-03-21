@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ContentPlannerSuccess() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function ContentPlannerSuccess() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#d8e8e0] to-[#b4d2c3] py-20 md:py-24">
-      <div className="container mx-auto px-4 max-w-lg">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1800px]">
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
           {/* Success Icon */}
           <div className="mb-8 flex justify-center">
@@ -46,6 +47,17 @@ export default function ContentPlannerSuccess() {
           <p className="text-gray-600 text-lg mb-12">
             Your registration has been successfully completed. Here&apos;s your free content planner!
           </p>
+
+          {/* Content Planner Preview Image */}
+          <div className="mb-8">
+            <Image
+              src="https://ucarecdn.com/f643ecca-c468-4324-899c-3450a0474c0c/ContentPlanner.png"
+              alt="Content Planner Preview"
+              width={1200}
+              height={900}
+              className="rounded-lg shadow-md mx-auto w-full md:w-[90%] lg:w-[95%] max-w-[1400px] object-contain"
+            />
+          </div>
 
           {/* Action Button */}
           <div className="space-y-4">
