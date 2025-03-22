@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import ImageSlideshow from '@/components/ImageSlideshow';
 
 export default function ContentPlannerSuccess() {
   const router = useRouter();
@@ -48,14 +48,27 @@ export default function ContentPlannerSuccess() {
             Your registration has been successfully completed. Here&apos;s your free content planner!
           </p>
 
-          {/* Content Planner Preview Image */}
-          <div className="mb-8">
-            <Image
-              src="https://ucarecdn.com/f643ecca-c468-4324-899c-3450a0474c0c/ContentPlanner.png"
-              alt="Content Planner Preview"
-              width={1200}
-              height={900}
-              className="rounded-lg shadow-md mx-auto w-full md:w-[90%] lg:w-[95%] max-w-[1400px] object-contain"
+          {/* Content Planner Preview Slideshow */}
+          <div className="mb-8 mx-auto w-full md:w-[90%] lg:w-[95%] max-w-[1400px]">
+            <ImageSlideshow
+              images={[
+                {
+                  src: "https://ucarecdn.com/f643ecca-c468-4324-899c-3450a0474c0c/ContentPlanner.png",
+                  alt: "Content Planner Overview"
+                },
+                {
+                  src: "https://ucarecdn.com/e016c851-d0ca-452b-a5d5-7dee4528d790/SocialMediaCampaignPlan.png",
+                  alt: "Social Media Campaign Plan"
+                },
+                {
+                  src: "https://ucarecdn.com/c11dc85b-d78f-471c-8c2f-996bf999ad60/HashtagDirectory.png",
+                  alt: "Hashtag Directory"
+                },
+                {
+                  src: "https://ucarecdn.com/024a689e-6e11-4db1-b5ab-643aeef5add2/SocialMediaStrategy.png",
+                  alt: "Social Media Strategy"
+                }
+              ]}
             />
           </div>
 
