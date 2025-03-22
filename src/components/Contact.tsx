@@ -1,4 +1,4 @@
-import { FaEnvelope, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 export default function Contacts() {
     return (
@@ -16,7 +16,7 @@ export default function Contacts() {
                     <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8 w-full md:w-auto">
                         {/* Email */}
                         <a 
-                            href="mailto:your.email@example.com" 
+                            href="mailto:tantipujian@gmail.com" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="flex items-center justify-center space-x-3 bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full md:w-auto">
@@ -26,7 +26,7 @@ export default function Contacts() {
 
                         {/* Instagram */}
                         <a 
-                            href="https://instagram.com/yourinstagram" 
+                            href="https://www.instagram.com/tantipujian" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="flex items-center justify-center space-x-3 bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full md:w-auto">
@@ -36,13 +36,22 @@ export default function Contacts() {
 
                         {/* LinkedIn */}
                         <a 
-                            href="https://linkedin.com/in/yourlinkedin" 
+                            href="https://www.linkedin.com/in/tanti-pujianti" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="flex items-center justify-center space-x-3 bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full md:w-auto">
                             <FaLinkedin size={24} className="text-blue-700" />
                             <span className="text-gray-700 font-medium">LinkedIn</span>
                         </a>
+
+                        <a 
+                        href="https://wa.me/6281573319882?text=Hi%20Tanti,%20I%20found%20your%20website%20and%20would%20like%20to%20discuss%20about%20your%20services."
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center space-x-3 bg-white rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full md:w-auto">
+                        <FaWhatsapp size={24} className="text-green-500" />
+                        <span className="text-gray-700 font-medium">WhatsApp</span>
+                    </a>
                     </div>
                 </div>
             </div>
