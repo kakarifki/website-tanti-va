@@ -32,8 +32,8 @@ export default function Login() {
         throw new Error(result.error || 'Failed to login');
       }
       
-      // Store the token in localStorage
-      localStorage.setItem('adminToken', result.token);
+      // Set the token in cookies
+      document.cookie = `adminToken=${result.token}; path=/`;
       
       // Redirect to admin dashboard
       router.push('/admin/dashboard');
