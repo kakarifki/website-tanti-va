@@ -9,7 +9,9 @@ export default function AdminDashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
+    const cookies = document.cookie.split(';');
+    const adminTokenCookie = cookies.find(cookie => cookie.trim().startsWith('adminToken='));
+    const token = adminTokenCookie ? adminTokenCookie.split('=')[1].trim() : null;
     if (!token) {
       router.push('/admin/login');
     }
@@ -38,7 +40,7 @@ export default function AdminDashboard() {
               </button>
               <button
                 onClick={() => {
-                  localStorage.removeItem('adminToken');
+                  document.cookie = 'adminToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
                   router.push('/admin/login');
                 }}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"

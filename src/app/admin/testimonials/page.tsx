@@ -32,7 +32,9 @@ const deleteTestimonial = async (id: string, token: string, queryClient: QueryCl
 };
 
 const fetchTestimonials = async () => {
-  const token = localStorage.getItem('adminToken');
+  const cookies = document.cookie.split(';');
+  const adminTokenCookie = cookies.find(cookie => cookie.trim().startsWith('adminToken='));
+  const token = adminTokenCookie ? adminTokenCookie.split('=')[1].trim() : null;
   if (!token) {
     throw new Error('No token found');
   }
@@ -58,7 +60,9 @@ export default function TestimonialsPage() {
   const [testimonialToDelete, setTestimonialToDelete] = useState<string | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
+    const cookies = document.cookie.split(';');
+    const adminTokenCookie = cookies.find(cookie => cookie.trim().startsWith('adminToken='));
+    const token = adminTokenCookie ? adminTokenCookie.split('=')[1].trim() : null;
     if (!token) {
       router.push('/admin/login');
     }
@@ -209,7 +213,9 @@ export default function TestimonialsPage() {
         }}
         onConfirm={async () => {
           if (!testimonialToDelete) return;
-          const token = localStorage.getItem('adminToken');
+          const cookies = document.cookie.split(';');
+          const adminTokenCookie = cookies.find(cookie => cookie.trim().startsWith('adminToken='));
+          const token = adminTokenCookie ? adminTokenCookie.split('=')[1].trim() : null;
           if (!token) {
             alert('No token found. Please login again.');
             return;

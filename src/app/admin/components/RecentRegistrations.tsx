@@ -5,7 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import { User } from '../dashboard/types';
 
 const fetchUsers = async () => {
-  const token = localStorage.getItem('adminToken');
+  const cookies = document.cookie.split(';');
+  const adminTokenCookie = cookies.find(cookie => cookie.trim().startsWith('adminToken='));
+  const token = adminTokenCookie ? adminTokenCookie.split('=')[1].trim() : null;
   if (!token) {
     throw new Error('No token found');
   }

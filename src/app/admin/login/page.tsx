@@ -33,7 +33,7 @@ export default function Login() {
       }
       
       // Set the token in cookies
-      document.cookie = `adminToken=${result.token}; path=/`;
+      document.cookie = `adminToken=${result.token}; path=/; max-age=86400; secure; samesite=strict`;
       
       // Redirect to admin dashboard
       router.push('/admin/dashboard');
